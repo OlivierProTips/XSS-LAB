@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 import mysql.connector
 
 # Site variables
-host = "http://192.168.2.82"
+host = "http://localhost"
 loginurl = f"{host}/login.php"
 messagesurl = f"{host}/read_user_messages.php"
 username = "marcus"
