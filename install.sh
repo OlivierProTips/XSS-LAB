@@ -45,7 +45,7 @@ echo "$USER_FLAG" > /home/$USERNAME/user.txt
 chown -R $USERNAME:$USERNAME /home/$USERNAME
 
 # Set read_messages script
-if [[ -n $1 && "$1" == "auto" ]]; then
+if [[ -z $1 || "$1" != "demo" ]]; then
     cp read_messages.py /root
     python3 -m venv /root/venv
     source /root/venv/bin/activate
