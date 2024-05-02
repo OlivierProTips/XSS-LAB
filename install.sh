@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CURRENT_USER=$(logname)
+INSTALL_FOLDER=$(pwd)
 
 if [[ "$EUID" != 0 || "$CURRENT_USER" == "root" ]]
   then echo "Please run as sudo"
@@ -43,10 +44,12 @@ cd /home/$USERNAME
 ln -sf /dev/null .bash_history
 echo "$USER_FLAG" > /home/$USERNAME/user.txt
 chown -R $USERNAME:$USERNAME /home/$USERNAME
+chmod 750 /home/$USERNAME{,/user.txt}
 
 # Set read_messages script
 if [[ -z $1 || "$1" != "demo" ]]; then
-    cp read_messages.py /root
+    apt install firefox-esr -y
+    cp "$INSTALL_FOLDER/read_messages.py" /root
     python3 -m venv /root/venv
     source /root/venv/bin/activate
     pip install selenium
@@ -56,7 +59,7 @@ if [[ -z $1 || "$1" != "demo" ]]; then
 fi
 
 # root privesc
-# echo "$USERNAME ALL=(root) /usr/bin/find" > /etc/sudoers.d/$USERNAME
+echo "$USERNAME ALL=(root) /bin/bash" > /etc/sudoers.d/$USERNAME
 
 # Remove current user
 cd /root

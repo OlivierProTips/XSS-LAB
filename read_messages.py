@@ -34,9 +34,9 @@ time.sleep(5)
 
 # Read and delete messages
 while True:
-    driver.get(messagesurl)
-    time.sleep(2)
     try:
+        driver.get(messagesurl)
+        time.sleep(2)
         with mysql.connector.connect(**connection_params) as db :
             with db.cursor() as c:
                 c.execute(del_req)
