@@ -1,8 +1,8 @@
-# SQLI LAB
+# XSS LAB
 
-Thanks to this repo, you'll be able to create a vulnerable VM to perform a simple sql injection.
+Thanks to this repo, you'll be able to create a vulnerable VM to perform a simple XSS (Cross-Site Scripting).
 
-It is inspired of the room [Kitty V2 on TryHackMe](https://tryhackme.com/room/kitty). But it has been made easier for beginners.
+The goal of it it to demonstrate and discover what is XSS
 
 The install script has been tested on Debian.
 
@@ -27,8 +27,23 @@ Also, install git: `sudo apt install git`
 ### Make it vulnerable
 
 ```bash
-git clone https://github.com/olivierprotips/SQLI-LAB
-cd SQLI-LAB
+git clone https://github.com/olivierprotips/XSS-LAB
+cd XSS-LAB
 chmod +x install.sh
 sudo ./install.sh
 ```
+
+### Demo mode
+
+By default, XSS-LAB is depoyed in automatic mode. It means that users messages are read automatically (to trigger XSS). That way, you can play in standalone.
+
+In case of demonstration, it can be disabled, meaning that you will play the admin. You will have to display the "Read User Messages" to trigger XSS.
+
+To activate the demo mode, after having retrieved the Git Repo :
+
+```bash
+chmod +x install.sh
+sudo ./install.sh demo
+```
+
+Note: it is done at install. Modes cannot be switched after.
