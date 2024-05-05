@@ -14,15 +14,15 @@ First create a Debian VM. A simple one with no GUI is enough. Just enable ssh.
 
 During installation, create a user. It will be used to set the vulnerable website and it will be automatically deleted at the end.
 
-Once the VM is created, connect to it, and give sudo role to the user
+Once the VM is created, connect to it, and install sudo and git, and give sudo role to the user
 
 ```bash
 ssh myuser@myvm
 su -
+apt install -y sudo git
 adduser myuser sudo
+reboot
 ```
-
-Also, install git: `sudo apt install git`
 
 ### Make it vulnerable
 
